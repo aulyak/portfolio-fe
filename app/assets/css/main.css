@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Critical CSS to prevent FOUC - These styles load first */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #1f2937;
+  background-color: #ffffff;
+  font-feature-settings: 'kern' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #f9fafb;
+    background-color: #111827;
+  }
+}
+
+/* Prevent layout shift on load */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Smooth transitions for better UX */
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
