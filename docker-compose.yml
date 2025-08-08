@@ -1,14 +1,20 @@
 version: '3.8'
+
 services:
   nuxt-app:
     build: .
-    ports:
-      - "3000:3000"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nuxt.rule=Host(`localhost`)"
-      - "traefik.http.routers.nuxt.entrypoints=web,websecure"
-      - "traefik.http.routers.nuxt.tls.certresolver=le"
+    restart: unless-stopped
     environment:
       - NODE_ENV=development
-    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nuxt.rule=Host(`yourdomain.com`)"  # 👈 Use real domain
+      - "traefik.http.routers.nuxt.entrypoints=websecure"
+      - "traefik.http.routers.nuxt.tls.certresolver=mytlschallenge"
+      - "traefik.docker.network=web"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
