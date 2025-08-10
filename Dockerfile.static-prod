@@ -81,13 +81,14 @@ RUN mkdir -p /var/cache/nginx/client_temp \
     /var/cache/nginx/uwsgi_temp \
     /var/cache/nginx/scgi_temp && \
     chown -R nginx:nginx /var/cache/nginx && \
-    chmod -R 755 /var/cache/nginx
+    chmod -R 755 /var/cache/nginx && \
+    apk add --no-cache curl
 
 EXPOSE 80
 
 # Health check for Traefik
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost/health || exit 1
+    CMD curl -f http://localhost/health || exit 1
 
 # Start nginx (run as root in container for simplicity)
 CMD ["nginx", "-g", "daemon off;"]
