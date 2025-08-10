@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.static-prod
+    ports:
+      - "8080:80"  # Temporary for debugging
     networks:
       - web
     labels:
