@@ -1,0 +1,62 @@
+
+# Ultra-optimized Dockerfile with pruning
+FROM node:22-alpine AS builder
+WORKDIR /app
+
+# Copy package files first for better Docker layer caching
+COPY package*.json ./
+
+# Install ALL dependencies (including devDependencies) for building
+RUN npm ci --frozen-lockfile
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# --- Pruned Dependencies Stage ---
+FROM node:22-alpine AS deps
+WORKDIR /app
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --frozen-lockfile --omit=dev && \
+    npm cache clean --force
+
+# Remove unnecessary files from node_modules
+RUN find node_modules -name "*.md" -delete && \
+    find node_modules -name "*.txt" -delete && \
+    find node_modules -name "README*" -delete && \
+    find node_modules -name "CHANGELOG*" -delete && \
+    find node_modules -name "HISTORY*" -delete && \
+    find node_modules -name "LICENSE*" -delete && \
+    find node_modules -name "*.map" -delete && \
+    find node_modules -name "*.ts" -delete && \
+    find node_modules -name "test" -type d -exec rm -rf {} + 2>/dev/null || true && \
+    find node_modules -name "tests" -type d -exec rm -rf {} + 2>/dev/null || true && \
+    find node_modules -name "__tests__" -type d -exec rm -rf {} + 2>/dev/null || true && \
+    find node_modules -name "*.test.js" -delete && \
+    find node_modules -name "*.spec.js" -delete && \
+    find node_modules -name ".github" -type d -exec rm -rf {} + 2>/dev/null || true && \
+    find node_modules -name "docs" -type d -exec rm -rf {} + 2>/dev/null || true
+
+# --- Production Stage ---
+FROM gcr.io/distroless/nodejs22-debian12 AS production
+WORKDIR /app
+
+# Copy pruned runtime dependencies
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy built application
+COPY --from=builder /app/.output ./.output
+COPY --from=builder /app/package.json ./package.json
+
+# Set environment
+ENV NODE_ENV=production
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=3000
+
+EXPOSE 3000
+
+CMD [".output/server/index.mjs"]

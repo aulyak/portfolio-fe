@@ -6,5 +6,39 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
   
   // Ensure proper hydration
-  ssr: true
+  ssr: true,
+
+  // Production optimizations
+  nitro: {
+    minify: true,
+    compressPublicAssets: {
+      gzip: true,
+      brotli: true
+    },
+  },
+
+  // Reduce bundle size
+  experimental: {
+    payloadExtraction: false,
+  },
+
+  // Image optimization
+  image: {
+    quality: 80,
+    format: ['webp'],
+    // Only load images when needed
+    provider: 'ipx'
+  },
+
+  // Build optimizations
+  build: {
+    transpile: [],
+  },
+
+  // Runtime optimizations
+  runtimeConfig: {
+    public: {
+      // Reduce runtime bundle
+    }
+  }
 })

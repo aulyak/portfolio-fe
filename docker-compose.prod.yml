@@ -1,0 +1,32 @@
+services:
+  nuxt-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - NODE_ENV=production
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nuxt-prod.rule=Host(`itsinav.run`)"
+      - "traefik.http.routers.nuxt-prod.entrypoints=websecure"
+      - "traefik.http.routers.nuxt-prod.tls.certresolver=mytlschallenge"
+      - "traefik.docker.network=web"
+      # Specify the service port for Traefik
+      - "traefik.http.services.nuxt-prod.loadbalancer.server.port=3000"
+      # Security headers
+      - "traefik.http.middlewares.nuxt-prod-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.nuxt-prod-headers.headers.customresponseheaders.X-Frame-Options=SAMEORIGIN"
+      - "traefik.http.middlewares.nuxt-prod-headers.headers.customresponseheaders.X-Content-Type-Options=nosniff"
+      - "traefik.http.routers.nuxt-prod.middlewares=nuxt-prod-headers"
+    restart: unless-stopped
+    # Remove port exposure - Traefik handles it
+    # ports:
+    #   - "3000:3000"
+
+networks:
+  web:
+    external: true

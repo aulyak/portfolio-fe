@@ -1,0 +1,10 @@
+services:
+  portfolio-static-local:
+    build:
+      context: .
+      dockerfile: Dockerfile.static-local
+    ports:
+      - "8080:80"  # Expose port 8080 locally
+    restart: unless-stopped
+    # No Traefik labels for local testing
+    # No external network needed

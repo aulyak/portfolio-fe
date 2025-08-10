@@ -1,0 +1,24 @@
+services:
+  portfolio-static:
+    build:
+      context: .
+      dockerfile: Dockerfile.static-prod
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio-static.rule=Host(`itsinav.run`)"
+      - "traefik.http.routers.portfolio-static.entrypoints=websecure"
+      - "traefik.http.routers.portfolio-static.tls.certresolver=mytlschallenge"
+      - "traefik.docker.network=web"
+      - "traefik.http.services.portfolio-static.loadbalancer.server.port=80"
+      # Security headers
+      - "traefik.http.middlewares.portfolio-static-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.portfolio-static-headers.headers.customresponseheaders.X-Frame-Options=SAMEORIGIN"
+      - "traefik.http.middlewares.portfolio-static-headers.headers.customresponseheaders.X-Content-Type-Options=nosniff"
+      - "traefik.http.routers.portfolio-static.middlewares=portfolio-static-headers"
+    restart: unless-stopped
+
+networks:
+  web:
+    external: true

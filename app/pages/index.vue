@@ -10,7 +10,7 @@
           <div class="flex justify-center gap-6 mb-8">
             <UIcon name="i-heroicons-code-bracket" class="w-12 h-12 text-white/90" />
             <UIcon name="i-heroicons-cpu-chip" class="w-12 h-12 text-white/80" />
-            <UIcon name="i-heroicons-terminal" class="w-12 h-12 text-white/80" />
+            <UIcon name="i-heroicons-command-line" class="w-12 h-12 text-white/80" />
             <UIcon name="i-heroicons-cloud" class="w-12 h-12 text-white/80" />
             <UIcon name="i-heroicons-rocket-launch" class="w-12 h-12 text-white/80" />
           </div>
