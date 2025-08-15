@@ -412,196 +412,8 @@
       </UContainer>
     </section>
 
-    <!-- Projects Section - Cyberpunk Grid -->
-    <section id="projects" class="section min-h-screen flex items-center relative overflow-hidden" ref="projectsSection">
-      <!-- Cyberpunk background -->
-      <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-cyan-900">
-        <div class="cyber-grid opacity-40"></div>
-      </div>
-      
-      <UContainer class="relative z-10">
-        <div class="section-content py-24">
-          <!-- Glitch title -->
-          <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-black text-white mb-4 glitch-text" data-text="[PROJECTS]">
-              [PROJECTS]
-            </h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto mb-4"></div>
-            <p class="text-gray-300 font-mono">&gt; showcasing_digital_craftsmanship.exe</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <!-- Web Application -->
-            <div class="cyber-project-card group">
-              <div class="cyber-project-header">
-                <div class="flex items-center justify-between mb-4">
-                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-cyan-400" />
-                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
-                </div>
-                <h3 class="text-xl font-bold text-white font-mono mb-2">WEB_APPLICATION</h3>
-                <p class="text-gray-300 text-sm mb-4">Modern, responsive web applications built with cutting-edge technologies</p>
-              </div>
-              <div class="cyber-project-content">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="tech-tag">Vue.js</span>
-                  <span class="tech-tag">Nuxt.js</span>
-                  <span class="tech-tag">TypeScript</span>
-                </div>
-                <div class="cyber-project-links">
-                  <button class="cyber-link" @click="toggleCategory('webApp')">
-                    EXPLORE_{{'{'}}.{{'}'}}_
-                    <UIcon 
-                      name="i-heroicons-chevron-down" 
-                      class="w-4 h-4 ml-2 transition-transform duration-300"
-                      :class="{ 'rotate-180': expandedCategory === 'webApp' }"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Backend API -->
-            <div class="cyber-project-card group">
-              <div class="cyber-project-header">
-                <div class="flex items-center justify-between mb-4">
-                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-purple-400" />
-                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
-                </div>
-                <h3 class="text-xl font-bold text-white font-mono mb-2">BACKEND_API</h3>
-                <p class="text-gray-300 text-sm mb-4">Scalable backend solutions and RESTful APIs for robust applications</p>
-              </div>
-              <div class="cyber-project-content">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">Express</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                </div>
-                <div class="cyber-project-links">
-                  <button class="cyber-link" @click="toggleCategory('backendApi')">
-                    EXPLORE_{{'{'}}.{{'}'}}_
-                    <UIcon 
-                      name="i-heroicons-chevron-down" 
-                      class="w-4 h-4 ml-2 transition-transform duration-300"
-                      :class="{ 'rotate-180': expandedCategory === 'backendApi' }"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Blog -->
-            <div class="cyber-project-card group">
-              <div class="cyber-project-header">
-                <div class="flex items-center justify-between mb-4">
-                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-green-400" />
-                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
-                </div>
-                <h3 class="text-xl font-bold text-white font-mono mb-2">BLOG</h3>
-                <p class="text-gray-300 text-sm mb-4">Technical articles and insights from development experiences</p>
-              </div>
-              <div class="cyber-project-content">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="tech-tag">Writing</span>
-                  <span class="tech-tag">Tech</span>
-                  <span class="tech-tag">Insights</span>
-                </div>
-                <div class="cyber-project-links">
-                  <button class="cyber-link" @click="toggleCategory('blog')">
-                    EXPLORE_{{'{'}}.{{'}'}}_
-                    <UIcon 
-                      name="i-heroicons-chevron-down" 
-                      class="w-4 h-4 ml-2 transition-transform duration-300"
-                      :class="{ 'rotate-180': expandedCategory === 'blog' }"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Expandable Project Lists -->
-          <transition name="cyber-expand" mode="out-in">
-            <div v-if="expandedCategory" class="mt-16 max-w-7xl mx-auto">
-              <!-- Terminal-style project browser -->
-              <div class="cyber-terminal-window">
-                <div class="cyber-terminal-header">
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                      <div class="flex space-x-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                      </div>
-                      <span class="font-mono text-cyan-400 text-sm">
-                        ~/projects/{{ expandedCategory }}/
-                      </span>
-                    </div>
-                    <button 
-                      @click="closeCategory()" 
-                      class="text-gray-400 hover:text-red-400 transition-colors"
-                    >
-                      <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-                
-                <div class="cyber-terminal-content">
-                  <!-- Under Construction Content -->
-                  <div class="text-center py-16">
-                    <div class="mb-8">
-                      <UIcon name="i-heroicons-wrench-screwdriver" class="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-pulse" />
-                    </div>
-                    
-                    <div class="terminal-text mb-6">
-                      <div class="font-mono text-cyan-400 text-sm mb-2">
-                        <span class="typing-animation">> initializing_project_database.exe...</span>
-                      </div>
-                      <div class="font-mono text-yellow-400 text-sm mb-2">
-                        <span>> status: WORK_IN_PROGRESS</span>
-                      </div>
-                      <div class="font-mono text-green-400 text-sm">
-                        <span>> estimated_completion: SOON™</span>
-                      </div>
-                    </div>
-
-                    <h3 class="text-2xl md:text-3xl font-black text-white mb-4 glitch-text" data-text="[UNDER_CONSTRUCTION]">
-                      [UNDER_CONSTRUCTION]
-                    </h3>
-                    
-                    <p class="text-gray-300 font-mono text-sm mb-8 max-w-md mx-auto">
-                      This section is currently being developed. <br/>
-                      Projects will be catalogued and displayed here soon.
-                    </p>
-
-                    <div class="cyber-construction-visual">
-                      <div class="flex justify-center space-x-4 mb-6">
-                        <div class="cyber-progress-bar">
-                          <div class="cyber-progress-fill" style="width: 65%"></div>
-                        </div>
-                      </div>
-                      
-                      <div class="font-mono text-xs text-gray-400">
-                        <div class="mb-1">Building awesome projects...</div>
-                        <div class="text-cyan-400">Progress: 65% [████████████░░░░░░░]</div>
-                      </div>
-                    </div>
-
-                    <div class="mt-8">
-                      <button 
-                        @click="closeCategory()" 
-                        class="cyber-link"
-                      >
-                        CLOSE_TERMINAL
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </transition>
-        </div>
-      </UContainer>
-    </section>
+    <!-- Projects Section -->
+    <ProjectsSection ref="projectsSection" />
 
     <!-- Contact Section - Cyberpunk Terminal -->
     <section id="contact" class="section min-h-screen flex items-center relative overflow-hidden" ref="contactSection">
@@ -708,7 +520,6 @@ const homeSection = ref<HTMLElement>()
 const aboutSection = ref<HTMLElement>()
 const expertiseSection = ref<HTMLElement>()
 const experienceSection = ref<HTMLElement>()
-const projectsSection = ref<HTMLElement>()
 const contactSection = ref<HTMLElement>()
 
 // Smooth scrolling function
@@ -729,7 +540,7 @@ onMounted(() => {
     { id: 'about', ref: aboutSection },
     { id: 'expertise', ref: expertiseSection },
     { id: 'experience', ref: experienceSection },
-    { id: 'projects', ref: projectsSection },
+    { id: 'projects', ref: null }, // Component-based section, handled separately
     { id: 'contact', ref: contactSection }
   ]
 
@@ -760,10 +571,18 @@ onMounted(() => {
   )
 
   sections.forEach(({ ref }) => {
-    if (ref.value) {
+    if (ref && ref.value) {
       observer.observe(ref.value)
     }
   })
+
+  // Special handling for projects section component
+  setTimeout(() => {
+    const projectsElement = document.getElementById('projects')
+    if (projectsElement) {
+      observer.observe(projectsElement)
+    }
+  }, 100)
 
   // Setup experience card animations
   const experienceCardObserver = new IntersectionObserver(
@@ -873,22 +692,6 @@ onMounted(() => {
     window.removeEventListener('hashchange', handleInitialHash)
   })
 })
-
-// Projects expandable categories
-const expandedCategory = ref<string | null>(null)
-
-// Methods for handling category expansion
-const toggleCategory = (category: string) => {
-  if (expandedCategory.value === category) {
-    expandedCategory.value = null
-  } else {
-    expandedCategory.value = category
-  }
-}
-
-const closeCategory = () => {
-  expandedCategory.value = null
-}
 
 // SEO Meta
 useSeoMeta({
@@ -1135,59 +938,6 @@ useSeoMeta({
   border-color: rgba(168, 85, 247, 0.5);
   color: #a855f7;
   transform: scale(1.1);
-}
-
-/* Project Cards */
-.cyber-project-card {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 24px;
-  transition: all 0.4s ease;
-  transform: perspective(1000px) rotateY(0deg);
-}
-
-.cyber-project-card:hover {
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  transform: perspective(1000px) rotateY(5deg) translateY(-15px);
-}
-
-.tech-tag {
-  padding: 4px 8px;
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 4px;
-  color: #a855f7;
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.cyber-project-links {
-  display: flex;
-  gap: 12px;
-}
-
-.cyber-link {
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid rgba(0, 255, 255, 0.5);
-  color: #00ffff;
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.cyber-link:hover {
-  background: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
 }
 
 /* Contact Cards */
@@ -1863,14 +1613,16 @@ button:active {
   }
 }
 
-/* Cyberpunk expandable project sections */
-.cyber-expand-enter-active, .cyber-expand-leave-active {
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Modal popup transitions */
+.modal-fade-enter-active, .modal-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.cyber-expand-enter-from, .cyber-expand-leave-to {
+.modal-fade-enter-from, .modal-fade-leave-to {
   opacity: 0;
-  transform: translateY(-20px) scaleY(0.9);
+}
+.modal-fade-leave-to .cyber-terminal-window {
+  transform: scale(0.9) translateY(-20px);
 }
 
 .cyber-terminal-window {
@@ -2024,13 +1776,13 @@ button:active {
 
 /* Under Construction Styles */
 .cyber-construction-visual {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .cyber-progress-bar {
   width: 100%;
-  height: 8px;
+  height: 12px;
   background: linear-gradient(90deg, rgba(17, 24, 39, 0.8), rgba(31, 41, 55, 0.6));
   border: 1px solid rgba(75, 85, 99, 0.4);
   border-radius: 4px;
@@ -2089,5 +1841,21 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Modal specific styles */
+.cyber-terminal-window {
+  transform: translateZ(0); /* Force hardware acceleration */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Prevent body scroll when modal is open */
+.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+  -webkit-overflow-scrolling: touch;
+  position: fixed !important;
+  width: 100% !important;
 }
 </style>
