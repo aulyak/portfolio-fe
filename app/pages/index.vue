@@ -3,136 +3,187 @@
     <!-- Scroll Progress Indicator -->
     <ScrollProgress :activeSection="activeSection" :scrollToSection="scrollToSection" />
     
-    <!-- Fixed Navigation -->
-    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-purple-400/30">
-      <div class="flex items-center gap-4">
+    <!-- Cyberpunk Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/20 backdrop-blur-lg border border-purple-500/30 rounded-full px-6 py-3 shadow-xl">
+      <div class="flex items-center gap-6">
         <a 
           href="#home" 
           @click="scrollToSection('home')"
-          class="text-sm font-medium transition-colors hover:text-purple-400 cursor-pointer"
-          :class="{ 'text-purple-400': activeSection === 'home', 'text-gray-300': activeSection !== 'home' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'home', 'text-cyan-400': activeSection !== 'home' }"
         >
-          Home
+          01_HOME
         </a>
         <a 
           href="#about" 
           @click="scrollToSection('about')"
-          class="text-sm font-medium transition-colors hover:text-purple-400 cursor-pointer"
-          :class="{ 'text-purple-400': activeSection === 'about', 'text-gray-300': activeSection !== 'about' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'about', 'text-cyan-400': activeSection !== 'about' }"
         >
-          About
+          02_ABOUT
         </a>
         <a 
           href="#expertise" 
           @click="scrollToSection('expertise')"
-          class="text-sm font-medium transition-colors hover:text-purple-400 cursor-pointer"
-          :class="{ 'text-purple-400': activeSection === 'expertise', 'text-gray-300': activeSection !== 'expertise' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'expertise', 'text-cyan-400': activeSection !== 'expertise' }"
         >
-          Expertise
+          03_SKILLS
         </a>
         <a 
           href="#experience" 
           @click="scrollToSection('experience')"
-          class="text-sm font-medium transition-colors hover:text-cyan-400 cursor-pointer"
-          :class="{ 'text-cyan-400': activeSection === 'experience', 'text-gray-300': activeSection !== 'experience' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'experience', 'text-cyan-400': activeSection !== 'experience' }"
         >
-          Experience
+          04_XP
         </a>
         <a 
           href="#projects" 
           @click="scrollToSection('projects')"
-          class="text-sm font-medium transition-colors hover:text-purple-400 cursor-pointer"
-          :class="{ 'text-purple-400': activeSection === 'projects', 'text-gray-300': activeSection !== 'projects' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'projects', 'text-cyan-400': activeSection !== 'projects' }"
         >
-          Projects
+          05_WORK
         </a>
         <a 
           href="#contact" 
           @click="scrollToSection('contact')"
-          class="text-sm font-medium transition-colors hover:text-purple-400 cursor-pointer"
-          :class="{ 'text-purple-400': activeSection === 'contact', 'text-gray-300': activeSection !== 'contact' }"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          :class="{ 'text-purple-400': activeSection === 'contact', 'text-cyan-400': activeSection !== 'contact' }"
         >
-          Contact
+          06_LINK
         </a>
       </div>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white parallax-section" ref="homeSection">
-      <div class="parallax-bg absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-black" data-speed="0.5"></div>
+    <!-- Home Section - Cyberpunk Hero -->
+    <section id="home" class="section min-h-screen flex items-center relative overflow-hidden" ref="homeSection">
+      <!-- Cyberpunk Matrix Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-purple-900">
+        <div class="matrix-bg"></div>
+        <div class="cyber-grid"></div>
+      </div>
+      
+      <!-- Glitch overlay -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="glitch-overlay"></div>
+      </div>
+
       <UContainer class="relative z-10">
-        <div class="w-full text-center">
-          <h1 class="hero-title text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 text-white drop-shadow-2xl bg-gradient-to-r from-white via-purple-200 to-cyan-300 bg-clip-text">
-            Aulya Khatulistivani
+        <div class="section-content text-center max-w-4xl mx-auto py-24">
+          <!-- Terminal-style header -->
+          <div class="terminal-header mb-8">
+            <div class="flex items-center justify-center space-x-4 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500 animate-pulse" style="animation-delay: 0.5s"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse" style="animation-delay: 1s"></div>
+            </div>
+            <div class="font-mono text-cyan-400 text-sm mb-4">
+              <span class="typing-animation">> initializing_portfolio.exe...</span>
+            </div>
+          </div>
+
+          <h1 class="hero-title text-5xl md:text-7xl font-black mb-8 leading-tight">
+            <span class="block text-white glitch-text" data-text="AULYA">AULYA</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glitch-text-secondary" data-text="KHATULISTIVANI">KHATULISTIVANI</span>
           </h1>
-          <div class="hero-icons flex justify-center gap-6 mb-8 parallax" data-speed="0.3">
-            <UIcon name="i-heroicons-code-bracket" class="w-12 h-12 text-purple-400/90" />
-            <UIcon name="i-heroicons-cpu-chip" class="w-12 h-12 text-cyan-400/80" />
-            <UIcon name="i-heroicons-command-line" class="w-12 h-12 text-purple-400/80" />
-            <UIcon name="i-heroicons-cloud" class="w-12 h-12 text-cyan-400/80" />
-            <UIcon name="i-heroicons-rocket-launch" class="w-12 h-12 text-purple-400/80" />
+
+          <div class="hero-subtitle mb-8">
+            <div class="inline-block border-2 border-cyan-400 px-6 py-2 font-mono text-cyan-400 uppercase tracking-wider cyber-box">
+              <span class="glitch-text-small">&lt; FULL_STACK_DEVELOPER /&gt;</span>
+            </div>
           </div>
-          <h2 class="hero-subtitle text-2xl md:text-3xl font-bold mb-8 opacity-90 text-purple-200">Full Stack Developer</h2>
-          <p class="hero-text mb-10 opacity-80 max-w-2xl mx-auto text-gray-300">
-            Passionate about creating innovative solutions and bringing ideas to life through code.
+
+          <div class="hero-icons flex justify-center space-x-8 mb-8">
+            <div class="cyber-icon">
+              <UIcon name="i-heroicons-code-bracket" class="w-12 h-12 text-cyan-400 hover:text-purple-400 transition-colors duration-300 floating" />
+            </div>
+            <div class="cyber-icon">
+              <UIcon name="i-heroicons-cpu-chip" class="w-12 h-12 text-cyan-400 hover:text-purple-400 transition-colors duration-300 floating" />
+            </div>
+            <div class="cyber-icon">
+              <UIcon name="i-heroicons-command-line" class="w-12 h-12 text-cyan-400 hover:text-purple-400 transition-colors duration-300 floating" />
+            </div>
+            <div class="cyber-icon">
+              <UIcon name="i-heroicons-cloud" class="w-12 h-12 text-cyan-400 hover:text-purple-400 transition-colors duration-300 floating" />
+            </div>
+          </div>
+
+          <p class="hero-text text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+            Crafting <span class="text-cyan-400 font-mono">digital_experiences</span> through 
+            <span class="text-purple-400 font-mono">clean_code</span> and 
+            <span class="text-cyan-400 font-mono">innovative_solutions</span>
           </p>
-          <div class="hero-buttons flex gap-4 justify-center">
-            <button 
-              @click="scrollToSection('about')" 
-              class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-500 transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-            >
-              About Me
+
+          <div class="hero-buttons flex flex-col sm:flex-row gap-6 justify-center">
+            <button @click="scrollToSection('projects')" class="cyber-btn cyber-btn-primary">
+              <span class="font-mono">[VIEW_PROJECTS]</span>
             </button>
-            <button 
-              @click="scrollToSection('expertise')" 
-              class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition-all transform hover:scale-105"
-            >
-              My Skills
-            </button>
-            <button 
-              @click="scrollToSection('projects')" 
-              class="border border-purple-400 text-purple-400 px-6 py-3 rounded-lg font-semibold hover:bg-purple-400 hover:text-black transition-all transform hover:scale-105"
-            >
-              View Projects
+            <button @click="scrollToSection('contact')" class="cyber-btn cyber-btn-secondary">
+              <span class="font-mono">[CONNECT]</span>
             </button>
           </div>
         </div>
       </UContainer>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section min-h-screen flex items-center bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white" ref="aboutSection">
-      <UContainer>
-        <div class="py-24">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="section-content">
-              <h1 class="text-6xl font-black text-white drop-shadow-lg mb-6 glow-text">About Me</h1>
-              <h2 class="text-2xl opacity-90 font-semibold text-purple-200 mb-6">Full Stack Developer & Creative Problem Solver</h2>
-              <p class="text-lg font-normal text-gray-300 mb-8 leading-relaxed max-w-xl backdrop-blur-sm bg-white/5 p-4 rounded-xl border border-purple-400/20">
-                I'm passionate about crafting exceptional digital experiences through clean code, innovative design, and user-centered thinking. With
-                expertise spanning both frontend and backend development, I bring ideas to life with modern technologies.
-              </p>
-              <div class="flex gap-4">
-                <button @click="scrollToSection('contact')" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25">
-                  Get In Touch
-                </button>
-                <button @click="scrollToSection('projects')" class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition-all">
-                  View My Work
-                </button>
-              </div>
+    <!-- About Section - Cyberpunk Terminal -->
+    <section id="about" class="section min-h-screen flex items-center relative overflow-hidden" ref="aboutSection">
+      <!-- Cyberpunk background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-purple-900">
+        <div class="cyber-grid opacity-30"></div>
+      </div>
+      
+      <UContainer class="relative z-10">
+        <div class="section-content py-24">
+          <!-- Terminal window -->
+          <div class="terminal-window max-w-4xl mx-auto">
+            <div class="terminal-header-bar flex items-center space-x-2 bg-gray-800 px-4 py-2 rounded-t-lg">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <span class="ml-4 text-gray-400 font-mono text-sm">about_me.json</span>
             </div>
-            <div class="flex justify-center">
-              <div class="relative">
-                <div class="w-80 h-80 bg-gradient-to-br from-purple-600/20 to-cyan-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-purple-400/30">
-                  <div class="relative">
-                    <UIcon name="i-heroicons-code-bracket" class="w-24 h-24 text-purple-400/90" />
-                    <div class="absolute -top-3 -right-3 w-6 h-6 bg-cyan-400/20 rounded-full flex items-center justify-center">
-                      <div class="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                    </div>
-                    <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-400/30 rounded-full"></div>
-                    <div class="absolute top-1/2 -right-6 w-3 h-3 bg-cyan-400/25 rounded-full"></div>
-                  </div>
+            
+            <div class="bg-black/80 backdrop-blur-sm border-2 border-cyan-400/30 rounded-b-lg p-8">
+              <div class="font-mono text-cyan-400 mb-4">
+                <span class="text-purple-400">const</span> <span class="text-white">developer</span> = {
+              </div>
+              
+              <div class="ml-4 space-y-4 text-gray-300">
+                <div class="font-mono">
+                  <span class="text-cyan-400">name:</span> <span class="text-green-400">"Aulya Khatulistivani"</span>,
                 </div>
+                <div class="font-mono">
+                  <span class="text-cyan-400">role:</span> <span class="text-green-400">"Full Stack Developer"</span>,
+                </div>
+                <div class="font-mono">
+                  <span class="text-cyan-400">passion:</span> [
+                  <div class="ml-4">
+                    <div><span class="text-green-400">"Creating innovative solutions"</span>,</div>
+                    <div><span class="text-green-400">"Building scalable applications"</span>,</div>
+                    <div><span class="text-green-400">"Exploring new technologies"</span>,</div>
+                    <div><span class="text-green-400">"Solving complex problems"</span></div>
+                  </div>
+                  ],
+                </div>
+                <div class="font-mono">
+                  <span class="text-cyan-400">description:</span> <span class="text-green-400">"Passionate about crafting digital experiences through clean, efficient code and modern design principles."</span>
+                </div>
+              </div>
+              
+              <div class="font-mono text-cyan-400 mt-4">
+                };
+              </div>
+              
+              <div class="mt-8 flex gap-4 justify-center">
+                <button @click="scrollToSection('contact')" class="cyber-btn cyber-btn-primary">
+                  <span class="font-mono">[GET_IN_TOUCH]</span>
+                </button>
+                <button @click="scrollToSection('projects')" class="cyber-btn cyber-btn-secondary">
+                  <span class="font-mono">[VIEW_WORK]</span>
+                </button>
               </div>
             </div>
           </div>
@@ -140,68 +191,96 @@
       </UContainer>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="section min-h-screen flex items-center bg-gradient-to-br from-purple-900 via-black to-gray-900 text-white" ref="expertiseSection">
-      <UContainer>
-        <div class="py-24">
-          <div class="section-content text-center">
-            <h1 class="text-6xl font-black text-white mb-8 glow-text">Expertise</h1>
-            <p class="text-xl text-purple-200 mb-12 max-w-2xl mx-auto">
-              A comprehensive toolkit for building modern web applications and digital solutions
-            </p>
+    <!-- Expertise Section - Cyberpunk Code Matrix -->
+    <section id="expertise" class="section min-h-screen flex items-center relative overflow-hidden" ref="expertiseSection">
+      <!-- Cyberpunk background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-gray-900">
+        <div class="matrix-bg opacity-20"></div>
+        <div class="cyber-grid"></div>
+      </div>
+      
+      <UContainer class="relative z-10">
+        <div class="section-content py-24">
+          <!-- Glitch title -->
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-4 glitch-text" data-text="<EXPERTISE/>">
+              &lt;EXPERTISE/&gt;
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto mb-4"></div>
+            <p class="text-gray-300 font-mono">&gt; comprehensive_toolkit.loaded()</p>
+          </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              <!-- Frontend Development -->
-              <div class="expertise-card bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:transform hover:scale-105">
-                <div class="flex items-center gap-3 mb-6">
-                  <div class="p-3 bg-purple-500/20 rounded-lg">
-                    <UIcon name="i-heroicons-code-bracket" class="w-6 h-6 text-purple-400" />
-                  </div>
-                  <h3 class="text-xl font-bold text-white">Frontend Development</h3>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">Vue.js</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">Nuxt.js</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">JavaScript</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">TypeScript</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-gray-500/20 text-gray-300 border border-gray-500/30">Tailwind CSS</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Frontend Development -->
+            <div class="cyber-skill-card group">
+              <div class="cyber-card-header">
+                <UIcon name="i-heroicons-code-bracket" class="w-8 h-8 text-cyan-400" />
+                <h3 class="text-xl font-bold text-white font-mono">FRONTEND_DEV</h3>
+              </div>
+              <div class="cyber-card-content">
+                <div class="skill-grid">
+                  <span class="skill-tag">Vue.js</span>
+                  <span class="skill-tag">Nuxt.js</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">TypeScript</span>
+                  <span class="skill-tag">Tailwind CSS</span>
+                  <span class="skill-tag">SCSS</span>
                 </div>
               </div>
+            </div>
 
-              <!-- Backend Development -->
-              <div class="expertise-card bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
-                <div class="flex items-center gap-3 mb-6">
-                  <div class="p-3 bg-cyan-500/20 rounded-lg">
-                    <UIcon name="i-heroicons-server" class="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <h3 class="text-xl font-bold text-white">Backend Development</h3>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Node.js</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Express.js</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">Go</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">PHP</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Python</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">PostgreSQL</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">MongoDB</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-gray-500/20 text-gray-300 border border-gray-500/30">Redis</span>
+            <!-- Backend Development -->
+            <div class="cyber-skill-card group">
+              <div class="cyber-card-header">
+                <UIcon name="i-heroicons-server" class="w-8 h-8 text-purple-400" />
+                <h3 class="text-xl font-bold text-white font-mono">BACKEND_DEV</h3>
+              </div>
+              <div class="cyber-card-content">
+                <div class="skill-grid">
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">Express.js</span>
+                  <span class="skill-tag">Go</span>
+                  <span class="skill-tag">PHP</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">PostgreSQL</span>
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">Redis</span>
                 </div>
               </div>
+            </div>
 
-              <!-- DevOps & Tools -->
-              <div class="expertise-card bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:transform hover:scale-105">
-                <div class="flex items-center gap-3 mb-6">
-                  <div class="p-3 bg-purple-500/20 rounded-lg">
-                    <UIcon name="i-heroicons-cloud" class="w-6 h-6 text-purple-400" />
-                  </div>
-                  <h3 class="text-xl font-bold text-white">DevOps & Tools</h3>
+            <!-- DevOps & Cloud -->
+            <div class="cyber-skill-card group">
+              <div class="cyber-card-header">
+                <UIcon name="i-heroicons-cloud" class="w-8 h-8 text-cyan-400" />
+                <h3 class="text-xl font-bold text-white font-mono">DEVOPS_CLOUD</h3>
+              </div>
+              <div class="cyber-card-content">
+                <div class="skill-grid">
+                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">AWS</span>
+                  <span class="skill-tag">Git</span>
+                  <span class="skill-tag">CI/CD</span>
+                  <span class="skill-tag">Linux</span>
+                  <span class="skill-tag">Nginx</span>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Docker</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">AWS</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-gray-500/20 text-gray-300 border border-gray-500/30">Git</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">CI/CD</span>
-                  <span class="skill-badge px-3 py-1 rounded-full text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30">Linux</span>
+              </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div class="cyber-skill-card group">
+              <div class="cyber-card-header">
+                <UIcon name="i-heroicons-wrench-screwdriver" class="w-8 h-8 text-purple-400" />
+                <h3 class="text-xl font-bold text-white font-mono">TOOLS_TECH</h3>
+              </div>
+              <div class="cyber-card-content">
+                <div class="skill-grid">
+                  <span class="skill-tag">VS Code</span>
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">Postman</span>
+                  <span class="skill-tag">Jest</span>
+                  <span class="skill-tag">Webpack</span>
+                  <span class="skill-tag">Vite</span>
                 </div>
               </div>
             </div>
@@ -333,39 +412,91 @@
       </UContainer>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white" ref="projectsSection">
-      <UContainer>
-        <div class="py-24 text-center">
-          <div class="section-content">
-            <h1 class="text-6xl font-black text-white mb-8 glow-text">Projects</h1>
-            <p class="text-xl text-purple-200 mb-12 max-w-2xl mx-auto">
-              Explore my portfolio of creative and technical work, showcasing modern web development solutions.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              <!-- Project Cards -->
-              <div class="project-card bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 border border-purple-400/20 hover:border-purple-400/40">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <UIcon name="i-heroicons-code-bracket" class="w-6 h-6 text-purple-400" />
+    <!-- Projects Section - Cyberpunk Grid -->
+    <section id="projects" class="section min-h-screen flex items-center relative overflow-hidden" ref="projectsSection">
+      <!-- Cyberpunk background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-cyan-900">
+        <div class="cyber-grid opacity-40"></div>
+      </div>
+      
+      <UContainer class="relative z-10">
+        <div class="section-content py-24">
+          <!-- Glitch title -->
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-4 glitch-text" data-text="[PROJECTS]">
+              [PROJECTS]
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto mb-4"></div>
+            <p class="text-gray-300 font-mono">&gt; showcasing_digital_craftsmanship.exe</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Project 1 -->
+            <div class="cyber-project-card group">
+              <div class="cyber-project-header">
+                <div class="flex items-center justify-between mb-4">
+                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-cyan-400" />
+                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Web Applications</h3>
-                <p class="text-gray-300">Modern, responsive web applications built with cutting-edge technologies.</p>
+                <h3 class="text-xl font-bold text-white font-mono mb-2">WEB_APPLICATIONS</h3>
+                <p class="text-gray-300 text-sm mb-4">Modern, responsive web applications built with cutting-edge technologies</p>
               </div>
-              
-              <div class="project-card bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 border border-cyan-400/20 hover:border-cyan-400/40">
-                <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <UIcon name="i-heroicons-cpu-chip" class="w-6 h-6 text-cyan-400" />
+              <div class="cyber-project-content">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">Nuxt.js</span>
+                  <span class="tech-tag">TypeScript</span>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">APIs & Backend</h3>
-                <p class="text-gray-300">Scalable backend solutions and RESTful APIs for robust applications.</p>
+                <div class="cyber-project-links">
+                  <button class="cyber-link">VIEW_CODE</button>
+                  <button class="cyber-link">LIVE_DEMO</button>
+                </div>
               </div>
-              
-              <div class="project-card bg-white/5 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 border border-purple-400/20 hover:border-purple-400/40">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <UIcon name="i-heroicons-cloud" class="w-6 h-6 text-purple-400" />
+            </div>
+
+            <!-- Project 2 -->
+            <div class="cyber-project-card group">
+              <div class="cyber-project-header">
+                <div class="flex items-center justify-between mb-4">
+                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-purple-400" />
+                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Cloud Solutions</h3>
-                <p class="text-gray-300">Cloud-native applications and deployment strategies for modern workflows.</p>
+                <h3 class="text-xl font-bold text-white font-mono mb-2">API_BACKEND</h3>
+                <p class="text-gray-300 text-sm mb-4">Scalable backend solutions and RESTful APIs for robust applications</p>
+              </div>
+              <div class="cyber-project-content">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Express</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                </div>
+                <div class="cyber-project-links">
+                  <button class="cyber-link">VIEW_CODE</button>
+                  <button class="cyber-link">API_DOCS</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="cyber-project-card group">
+              <div class="cyber-project-header">
+                <div class="flex items-center justify-between mb-4">
+                  <UIcon name="i-heroicons-folder" class="w-6 h-6 text-cyan-400" />
+                  <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+                </div>
+                <h3 class="text-xl font-bold text-white font-mono mb-2">CLOUD_SOLUTIONS</h3>
+                <p class="text-gray-300 text-sm mb-4">Cloud-native applications and deployment strategies for modern workflows</p>
+              </div>
+              <div class="cyber-project-content">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">AWS</span>
+                  <span class="tech-tag">CI/CD</span>
+                </div>
+                <div class="cyber-project-links">
+                  <button class="cyber-link">VIEW_CODE</button>
+                  <button class="cyber-link">LIVE_DEMO</button>
+                </div>
               </div>
             </div>
           </div>
@@ -373,43 +504,90 @@
       </UContainer>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section min-h-screen flex items-center bg-gradient-to-br from-black via-purple-900 to-gray-900 text-white" ref="contactSection">
-      <UContainer>
-        <div class="py-24">
-          <div class="section-content text-center max-w-4xl mx-auto">
-            <h1 class="text-6xl font-black text-white mb-8 glow-text">Get In Touch</h1>
-            <p class="text-xl text-purple-200 mb-12">
-              Ready to bring your ideas to life? Let's collaborate and create something amazing together.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="contact-item bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-400/20 hover:border-purple-400/40 transition-all">
-                <UIcon name="i-simple-icons-github" class="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                <h3 class="text-lg font-semibold mb-2">GitHub</h3>
-                <a href="https://github.com/aulya" target="_blank" rel="noopener" class="text-gray-300 hover:text-purple-400 transition-colors underline break-all">
-                  github.com/aulyak
-                </a>
+    <!-- Contact Section - Cyberpunk Terminal -->
+    <section id="contact" class="section min-h-screen flex items-center relative overflow-hidden" ref="contactSection">
+      <!-- Cyberpunk background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-gray-900">
+        <div class="matrix-bg opacity-30"></div>
+        <div class="cyber-grid"></div>
+      </div>
+      
+      <UContainer class="relative z-10">
+        <div class="section-content py-24">
+          <!-- Terminal-style contact -->
+          <div class="max-w-4xl mx-auto">
+            <!-- Terminal header -->
+            <div class="terminal-window">
+              <div class="terminal-header-bar flex items-center space-x-2 bg-gray-800 px-4 py-2 rounded-t-lg">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="ml-4 text-gray-400 font-mono text-sm">connect.sh</span>
+              </div>
+              
+              <div class="bg-black/80 backdrop-blur-sm border-2 border-cyan-400/30 rounded-b-lg p-8">
+                <!-- Terminal content -->
+                <div class="font-mono text-green-400 mb-6">
+                  <div class="typing-animation">$ ./establish_connection.sh</div>
+                  <div class="mt-2 text-cyan-400">&gt; Initializing secure communication channels...</div>
+                  <div class="mt-1 text-white">&gt; Status: READY_TO_CONNECT</div>
+                </div>
+
+                <div class="text-center mb-12">
+                  <h2 class="text-4xl md:text-6xl font-black text-white mb-4 glitch-text" data-text="[CONNECT]">
+                    [CONNECT]
+                  </h2>
+                  <p class="text-gray-300 font-mono">&gt; establishing_digital_handshake.exe</p>
+                </div>
+
+                <!-- Contact cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <!-- GitHub -->
+                  <div class="cyber-contact-card group">
+                    <div class="cyber-contact-icon">
+                      <UIcon name="i-simple-icons-github" class="w-8 h-8 text-purple-400" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white font-mono mb-2">GITHUB</h3>
+                    <a href="https://github.com/aulyak" target="_blank" rel="noopener" class="cyber-contact-link">
+                      github.com/aulyak
+                    </a>
+                  </div>
+
+                  <!-- LinkedIn -->
+                  <div class="cyber-contact-card group">
+                    <div class="cyber-contact-icon">
+                      <UIcon name="i-simple-icons-linkedin" class="w-8 h-8 text-cyan-400" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white font-mono mb-2">LINKEDIN</h3>
+                    <a href="https://linkedin.com/in/aulyak" target="_blank" rel="noopener" class="cyber-contact-link">
+                      linkedin.com/in/aulyak
+                    </a>
+                  </div>
+
+                  <!-- Location -->
+                  <div class="cyber-contact-card group">
+                    <div class="cyber-contact-icon">
+                      <UIcon name="i-heroicons-map-pin" class="w-8 h-8 text-purple-400" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white font-mono mb-2">LOCATION</h3>
+                    <span class="cyber-contact-link">Jakarta, Indonesia</span>
+                  </div>
+                </div>
+
+                <!-- Terminal footer -->
+                <div class="mt-12 font-mono text-green-400 text-center">
+                  <div>&gt; connection_established.success</div>
+                  <div class="mt-2 text-cyan-400">&gt; ready_for_collaboration = true;</div>
                 </div>
                 
-                <div class="contact-item bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all">
-                <UIcon name="i-simple-icons-linkedin" class="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 class="text-lg font-semibold mb-2">LinkedIn</h3>
-                <a href="https://linkedin.com/in/aulya" target="_blank" rel="noopener" class="text-gray-300 hover:text-cyan-400 transition-colors underline break-all">
-                  linkedin.com/in/aulyak
-                </a>
+                <!-- Back to top button -->
+                <div class="mt-8 text-center">
+                  <button @click="scrollToSection('home')" class="cyber-btn cyber-btn-primary">
+                    <span class="font-mono">[BACK_TO_TOP]</span>
+                  </button>
                 </div>
-              
-              <div class="contact-item bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-400/20 hover:border-purple-400/40 transition-all">
-                <UIcon name="i-heroicons-map-pin" class="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                <h3 class="text-lg font-semibold mb-2">Location</h3>
-                <p class="text-gray-300">Jakarta, Indonesia</p>
               </div>
             </div>
-
-            <button @click="scrollToSection('home')" class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/25">
-              Back to Top
-            </button>
           </div>
         </div>
       </UContainer>
@@ -623,6 +801,720 @@ useSeoMeta({
   scroll-margin-top: 0;
   position: relative;
   overflow: hidden;
+}
+
+/* Cyberpunk Matrix Background */
+.matrix-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: matrix-scroll 20s linear infinite;
+}
+
+@keyframes matrix-scroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Cyber Grid */
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: grid-pulse 4s ease-in-out infinite;
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Glitch Effects */
+.glitch-text {
+  position: relative;
+  color: #fff;
+  animation: glitch 2s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-1 0.5s infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch-2 0.5s infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(-1px, 1px); }
+}
+
+/* Terminal Elements */
+.terminal-window {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.typing-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.typing-animation::after {
+  content: '█';
+  animation: blink 1s infinite;
+  color: #00ffff;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Cyberpunk Buttons */
+.cyber-btn {
+  position: relative;
+  padding: 16px 32px;
+  background: transparent;
+  border: 2px solid;
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  transform: perspective(500px) rotateX(0deg);
+  cursor: pointer;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-btn:hover::before {
+  left: 100%;
+}
+
+.cyber-btn-primary {
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.cyber-btn-primary:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  transform: perspective(500px) rotateX(5deg) translateY(-2px);
+}
+
+.cyber-btn-secondary {
+  border-color: #a855f7;
+  color: #a855f7;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.cyber-btn-secondary:hover {
+  background: rgba(168, 85, 247, 0.1);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+  transform: perspective(500px) rotateX(5deg) translateY(-2px);
+}
+
+/* Cyber Cards */
+.cyber-skill-card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+.cyber-skill-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+}
+
+.cyber-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  padding: 6px 12px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #a855f7;
+  transform: scale(1.1);
+}
+
+/* Project Cards */
+.cyber-project-card {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.4s ease;
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.cyber-project-card:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  transform: perspective(1000px) rotateY(5deg) translateY(-15px);
+}
+
+.tech-tag {
+  padding: 4px 8px;
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 4px;
+  color: #a855f7;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cyber-project-links {
+  display: flex;
+  gap: 12px;
+}
+
+.cyber-link {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cyber-link:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Contact Cards */
+.cyber-contact-card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+.cyber-contact-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+}
+
+.cyber-contact-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.cyber-contact-link {
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cyber-contact-link:hover {
+  color: #a855f7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+}
+
+/* Cyber Box */
+.cyber-box {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  animation: cyber-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes cyber-pulse {
+  0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+  100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
+}
+
+/* Floating animations */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating:nth-child(2) { animation-delay: -0.5s; }
+.floating:nth-child(3) { animation-delay: -1s; }
+.floating:nth-child(4) { animation-delay: -1.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Navigation */
+.nav-link {
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, #a855f7);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.text-purple-400::after {
+  width: 100%;
+}
+
+/* Glitch overlay */
+.glitch-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 0, 255, 0.03) 2px,
+      rgba(255, 0, 255, 0.03) 4px
+    );
+  animation: glitch-overlay 0.5s infinite;
+}
+
+@keyframes glitch-overlay {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+/* Section entrance animations */
+.section-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.section-content.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  animation: sectionSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sectionEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Hero animations */
+.hero-title {
+  opacity: 0;
+  animation: heroTitleEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.hero-icons {
+  opacity: 0;
+  animation: heroIconsEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.hero-subtitle {
+  opacity: 0;
+  animation: heroSubtitleEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+.hero-text {
+  opacity: 0;
+  animation: heroTextEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+.hero-buttons {
+  opacity: 0;
+  animation: heroButtonsEnter 1s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+
+@keyframes heroTitleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8) rotateX(20deg);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroIconsEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotateY(30deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(0) scale(1);
+  }
+}
+
+@keyframes heroSubtitleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroTextEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroButtonsEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 2.5rem;
+  }
+  
+  .cyber-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  .cyber-skill-card,
+  .cyber-project-card,
+  .cyber-contact-card {
+    transform: none !important;
+  }
+  
+  .cyber-skill-card:hover,
+  .cyber-project-card:hover,
+  .cyber-contact-card:hover {
+    transform: translateY(-5px) !important;
+  }
+}
+
+/* Reduce animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-title, .hero-icons, .hero-subtitle, .hero-text, .hero-buttons {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  .section-content {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Experience Section Cyberpunk Styles */
+.experience-chaos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  opacity: 0;
+  transform: translateY(50px) rotateX(10deg);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-card.in-view {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
+
+.experience-card.animate-in {
+  animation: cardSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8) rotateX(30deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+.floating-card {
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.skewed-card {
+  transform: skew(-2deg, 1deg);
+}
+
+.inverted-card {
+  transform: rotateY(5deg);
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+  33% { transform: translateY(-10px) rotateZ(1deg); }
+  66% { transform: translateY(-5px) rotateZ(-1deg); }
+}
+
+.card-glitch-border {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00ffff, #a855f7, #00ffff);
+  border-radius: 4px;
+  z-index: -1;
+  animation: borderPulse 2s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.tech-pill {
+  transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.glitch-hover:hover {
+  animation: glitchHover 0.3s ease;
+}
+
+@keyframes glitchHover {
+  0% { transform: translate(0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+.data-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.grid-background {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+.glitch-box {
+  animation: glitchFloat 2s ease-in-out infinite;
+}
+
+@keyframes glitchFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(90deg); }
+  50% { transform: translateY(10px) rotate(180deg); }
+  75% { transform: translateY(-5px) rotate(270deg); }
+}
+
+.glitch-layer-1,
+.glitch-layer-2,
+.glitch-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch-layer-1 {
+  color: #00ffff;
+  animation: glitch-1 0.3s infinite;
+  z-index: -1;
+}
+
+.glitch-layer-2 {
+  color: #ff00ff;
+  animation: glitch-2 0.3s infinite;
+  z-index: -2;
+}
+
+.glitch-layer-3 {
+  color: #ffff00;
+  animation: glitch-3 0.3s infinite;
+  z-index: -3;
+}
+
+@keyframes glitch-3 {
+  0%, 100% { transform: translate(0); opacity: 0.8; }
+  20% { transform: translate(2px, -2px); opacity: 0.6; }
+  40% { transform: translate(-2px, 2px); opacity: 0.8; }
+  60% { transform: translate(2px, 2px); opacity: 0.4; }
+  80% { transform: translate(-2px, -2px); opacity: 0.9; }
 }
 
 .parallax-section {
