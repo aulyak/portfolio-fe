@@ -20,9 +20,13 @@
 //   description: 'Explore my portfolio of creative and technical work.',
 // });
 
-// definePageMeta({
-//   title: 'Projects',
-// });
+definePageMeta({
+  title: 'Projects',
+  pageTransition: {
+    name: 'fade',
+    mode: 'out-in'
+  }
+});
 
 import UnderConstruction from '@/components/under-construction.vue';
 </script>

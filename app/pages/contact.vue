@@ -44,6 +44,10 @@ useSeoMeta({
 })
 
 definePageMeta({
-  title: 'Contact'
+  title: 'Contact',
+  pageTransition: {
+    name: 'slide',
+    mode: 'out-in'
+  }
 })
 </script>

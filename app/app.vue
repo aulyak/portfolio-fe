@@ -18,6 +18,15 @@ useHead({
     { name: 'theme-color', content: '#667eea' }
   ]
 })
+
+// Handle route changes for smooth transitions
+const route = useRoute()
+const { handleScrollOnTransition } = usePageTransitions()
+
+// Scroll to top on route change for better UX
+watch(() => route.path, () => {
+  handleScrollOnTransition()
+})
 </script>
 
 <style>
@@ -31,5 +40,16 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve transition performance */
+* {
+  backface-visibility: hidden;
+}
+
+/* Ensure layouts don't interfere with transitions */
+.layout-default {
+  min-height: 100vh;
+  position: relative;
 }
 </style>

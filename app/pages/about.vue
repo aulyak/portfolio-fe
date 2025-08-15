@@ -244,9 +244,13 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-// Page title
+// Page title and custom transition
 definePageMeta({
   title: 'About Me',
+  pageTransition: {
+    name: 'slide',
+    mode: 'out-in'
+  }
 });
 </script>
 

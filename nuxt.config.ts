@@ -5,6 +5,22 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui'],
   css: ['@/assets/css/main.css'],
   
+  // Single page app - disable page transitions
+  app: {
+    pageTransition: false,
+    layoutTransition: false,
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'color-scheme', content: 'dark' }
+      ]
+    }
+  },
+  
   // Ensure proper hydration
   ssr: true,
 
