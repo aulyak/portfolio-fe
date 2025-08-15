@@ -10,23 +10,23 @@
 // Add meta for better loading
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: 'en',
   },
-  meta: [
-    { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'theme-color', content: '#667eea' }
-  ]
-})
+  meta: [{charset: 'utf-8'}, {name: 'viewport', content: 'width=device-width, initial-scale=1'}, {name: 'theme-color', content: '#667eea'}],
+  link: [{rel: 'icon', type: 'image/png', href: '/programmer.png'}],
+});
 
 // Handle route changes for smooth transitions
-const route = useRoute()
-const { handleScrollOnTransition } = usePageTransitions()
+const route = useRoute();
+const {handleScrollOnTransition} = usePageTransitions();
 
 // Scroll to top on route change for better UX
-watch(() => route.path, () => {
-  handleScrollOnTransition()
-})
+watch(
+  () => route.path,
+  () => {
+    handleScrollOnTransition();
+  },
+);
 </script>
 
 <style>
