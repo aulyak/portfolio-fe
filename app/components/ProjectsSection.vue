@@ -6,40 +6,40 @@
     </div>
     
     <UContainer class="relative z-10">
-      <div class="section-content py-24">
+      <div class="section-content py-12 sm:py-16 md:py-24 px-4 sm:px-6">
         <!-- Glitch title -->
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-6xl font-black text-white mb-4 glitch-text" data-text="[PROJECTS]">
+        <div class="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 glitch-text" data-text="[PROJECTS]">
             [PROJECTS]
           </h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto mb-4"></div>
-          <p class="text-gray-300 font-mono">&gt; showcasing_digital_craftsmanship.exe</p>
+          <div class="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto mb-4"></div>
+          <p class="text-gray-300 font-mono text-sm sm:text-base">&gt; showcasing_digital_craftsmanship.exe</p>
         </div>
 
         <!-- Project Categories Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           <!-- Web Applications Category -->
           <div class="cyber-project-card group">
             <div class="cyber-project-header">
-              <div class="flex items-center justify-between mb-4">
-                <UIcon name="i-heroicons-folder" class="w-6 h-6 text-cyan-400" />
-                <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+              <div class="flex items-center justify-between mb-3 sm:mb-4">
+                <UIcon name="i-heroicons-folder" class="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" />
+                <UIcon name="i-simple-icons-github" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
               </div>
-              <h3 class="text-xl font-bold text-white font-mono mb-2">WEB_APPLICATION</h3>
-              <p class="text-gray-300 text-sm mb-4">Modern, responsive web applications built with cutting-edge technologies</p>
+              <h3 class="text-lg sm:text-xl font-bold text-white font-mono mb-2">WEB_APPLICATION</h3>
+              <p class="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">Modern, responsive web applications built with cutting-edge technologies</p>
             </div>
             <div class="cyber-project-content">
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">Nuxt.js</span>
-                <span class="tech-tag">TypeScript</span>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                <span class="tech-tag text-xs sm:text-sm">Vue.js</span>
+                <span class="tech-tag text-xs sm:text-sm">Nuxt.js</span>
+                <span class="tech-tag text-xs sm:text-sm">TypeScript</span>
               </div>
               <div class="cyber-project-links">
-                <button class="cyber-link" @click="toggleCategory('web-applications')">
+                <button class="cyber-link text-sm sm:text-base py-2 sm:py-3" @click="toggleCategory('web-applications')">
                   EXPLORE_{.}_
                   <UIcon 
                     name="i-heroicons-chevron-down" 
-                    class="w-4 h-4 ml-2 transition-transform duration-300"
+                    class="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform duration-300"
                   />
                 </button>
               </div>
@@ -49,25 +49,25 @@
           <!-- Backend APIs Category -->
           <div class="cyber-project-card group">
             <div class="cyber-project-header">
-              <div class="flex items-center justify-between mb-4">
-                <UIcon name="i-heroicons-folder" class="w-6 h-6 text-purple-400" />
-                <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+              <div class="flex items-center justify-between mb-3 sm:mb-4">
+                <UIcon name="i-heroicons-folder" class="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+                <UIcon name="i-simple-icons-github" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
               </div>
-              <h3 class="text-xl font-bold text-white font-mono mb-2">BACKEND_API</h3>
-              <p class="text-gray-300 text-sm mb-4">Scalable backend solutions and RESTful APIs for robust applications</p>
+              <h3 class="text-lg sm:text-xl font-bold text-white font-mono mb-2">BACKEND_API</h3>
+              <p class="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">Scalable backend solutions and RESTful APIs for robust applications</p>
             </div>
             <div class="cyber-project-content">
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">PostgreSQL</span>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                <span class="tech-tag text-xs sm:text-sm">Node.js</span>
+                <span class="tech-tag text-xs sm:text-sm">Express</span>
+                <span class="tech-tag text-xs sm:text-sm">PostgreSQL</span>
               </div>
               <div class="cyber-project-links">
-                <button class="cyber-link" @click="toggleCategory('backend-apis')">
+                <button class="cyber-link text-sm sm:text-base py-2 sm:py-3" @click="toggleCategory('backend-apis')">
                   EXPLORE_{.}_
                   <UIcon 
                     name="i-heroicons-chevron-down" 
-                    class="w-4 h-4 ml-2 transition-transform duration-300"
+                    class="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform duration-300"
                   />
                 </button>
               </div>
@@ -77,25 +77,25 @@
           <!-- Blog Category -->
           <div class="cyber-project-card group">
             <div class="cyber-project-header">
-              <div class="flex items-center justify-between mb-4">
-                <UIcon name="i-heroicons-folder" class="w-6 h-6 text-green-400" />
-                <UIcon name="i-simple-icons-github" class="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+              <div class="flex items-center justify-between mb-3 sm:mb-4">
+                <UIcon name="i-heroicons-folder" class="w-5 h-5 sm:w-6 sm:h-6 text-green-400" />
+                <UIcon name="i-simple-icons-github" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
               </div>
-              <h3 class="text-xl font-bold text-white font-mono mb-2">BLOG</h3>
-              <p class="text-gray-300 text-sm mb-4">Technical articles and insights from development experiences</p>
+              <h3 class="text-lg sm:text-xl font-bold text-white font-mono mb-2">BLOG</h3>
+              <p class="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">Technical articles and insights from development experiences</p>
             </div>
             <div class="cyber-project-content">
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="tech-tag">Writing</span>
-                <span class="tech-tag">Tech</span>
-                <span class="tech-tag">Insights</span>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                <span class="tech-tag text-xs sm:text-sm">Writing</span>
+                <span class="tech-tag text-xs sm:text-sm">Tech</span>
+                <span class="tech-tag text-xs sm:text-sm">Insights</span>
               </div>
               <div class="cyber-project-links">
-                <button class="cyber-link" @click="toggleCategory('blog')">
+                <button class="cyber-link text-sm sm:text-base py-2 sm:py-3" @click="toggleCategory('blog')">
                   EXPLORE_{.}_
                   <UIcon 
                     name="i-heroicons-chevron-down" 
-                    class="w-4 h-4 ml-2 transition-transform duration-300"
+                    class="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform duration-300"
                   />
                 </button>
               </div>
@@ -149,6 +149,11 @@ const closeCategory = () => {
 // Handle escape key to close modal
 onMounted(() => {
   console.log('ProjectsSection mounted successfully!')
+  
+  // Emit to parent that component is ready for navigation tracking
+  setTimeout(() => {
+    console.log('ProjectsSection ready for navigation tracking')
+  }, 100)
   
   const handleEscape = (event: KeyboardEvent) => {
     if (event.key === 'Escape' && expandedCategory.value) {

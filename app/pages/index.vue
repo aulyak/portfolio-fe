@@ -4,12 +4,12 @@
     <ScrollProgress :activeSection="activeSection" :scrollToSection="scrollToSection" />
     
     <!-- Cyberpunk Navigation -->
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/20 backdrop-blur-lg border border-purple-500/30 rounded-full px-6 py-3 shadow-xl">
-      <div class="flex items-center gap-6">
+    <nav class="fixed top-3 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/20 backdrop-blur-lg border border-purple-500/30 rounded-full px-2 sm:px-4 md:px-6 py-2 sm:py-3 shadow-xl w-[calc(100vw-1rem)] sm:w-auto max-w-[calc(100vw-1rem)] mx-auto">
+      <div class="flex items-center justify-between sm:justify-center gap-1 sm:gap-4 md:gap-6 overflow-x-auto scrollbar-hide whitespace-nowrap">
         <a 
           href="#home" 
           @click="scrollToSection('home')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'home', 'text-cyan-400': activeSection !== 'home' }"
         >
           01_HOME
@@ -17,7 +17,7 @@
         <a 
           href="#about" 
           @click="scrollToSection('about')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'about', 'text-cyan-400': activeSection !== 'about' }"
         >
           02_ABOUT
@@ -25,7 +25,7 @@
         <a 
           href="#expertise" 
           @click="scrollToSection('expertise')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'expertise', 'text-cyan-400': activeSection !== 'expertise' }"
         >
           03_SKILLS
@@ -33,7 +33,7 @@
         <a 
           href="#experience" 
           @click="scrollToSection('experience')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'experience', 'text-cyan-400': activeSection !== 'experience' }"
         >
           04_XP
@@ -41,7 +41,7 @@
         <a 
           href="#projects" 
           @click="scrollToSection('projects')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'projects', 'text-cyan-400': activeSection !== 'projects' }"
         >
           05_WORK
@@ -49,7 +49,7 @@
         <a 
           href="#contact" 
           @click="scrollToSection('contact')"
-          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-sm"
+          class="nav-link text-cyan-400 hover:text-purple-400 transition-colors duration-300 font-mono text-[9px] sm:text-sm flex-shrink-0 px-0.5 sm:px-2"
           :class="{ 'text-purple-400': activeSection === 'contact', 'text-cyan-400': activeSection !== 'contact' }"
         >
           06_LINK
@@ -547,7 +547,11 @@ onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+        // Lower threshold for experience section to ensure it gets detected
+        const isExperienceSection = entry.target.id === 'experience'
+        const threshold = isExperienceSection ? 0.2 : 0.3
+        
+        if (entry.isIntersecting && entry.intersectionRatio > threshold) {
           activeSection.value = entry.target.id
           
           // Update URL hash without triggering scroll
@@ -565,8 +569,8 @@ onMounted(() => {
       })
     },
     {
-      threshold: [0.3, 0.7],
-      rootMargin: '-20% 0px -20% 0px'
+      threshold: [0.1, 0.2, 0.3, 0.5, 0.7],
+      rootMargin: '-15% 0px -15% 0px'
     }
   )
 
@@ -581,8 +585,27 @@ onMounted(() => {
     const projectsElement = document.getElementById('projects')
     if (projectsElement) {
       observer.observe(projectsElement)
+      console.log('Projects section observed for navigation tracking')
+    } else {
+      console.log('Projects section not found')
     }
-  }, 100)
+  }, 500) // Increased timeout to ensure component is mounted
+
+  // Try multiple times if not found initially
+  let retryCount = 0
+  const maxRetries = 5
+  const retryInterval = setInterval(() => {
+    const projectsElement = document.getElementById('projects')
+    if (projectsElement) {
+      observer.observe(projectsElement)
+      console.log('Projects section found and observed after retry', retryCount)
+      clearInterval(retryInterval)
+    } else if (retryCount >= maxRetries) {
+      console.log('Projects section still not found after', maxRetries, 'retries')
+      clearInterval(retryInterval)
+    }
+    retryCount++
+  }, 200)
 
   // Setup experience card animations
   const experienceCardObserver = new IntersectionObserver(
@@ -1857,5 +1880,14 @@ button:active {
   -webkit-overflow-scrolling: touch;
   position: fixed !important;
   width: 100% !important;
+}
+
+/* Hide scrollbar for horizontal navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 </style>

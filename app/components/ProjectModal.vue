@@ -1,7 +1,7 @@
 <template>
   <!-- Project Modal Popup -->
   <transition name="modal-fade">
-    <div v-if="expandedCategory" class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden">
+    <div v-if="expandedCategory" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-hidden">
       <!-- Backdrop -->
       <div 
         class="absolute inset-0 bg-black/80 backdrop-blur-sm"
@@ -11,36 +11,36 @@
       ></div>
       
       <!-- Modal Content -->
-      <div class="relative w-full max-w-6xl max-h-[95vh] overflow-hidden">
+      <div class="relative w-full max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden mx-2 sm:mx-4">
         <!-- Terminal-style project browser -->
         <div class="cyber-terminal-window">
           <div class="cyber-terminal-header">
             <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-4">
-                <div class="flex space-x-2">
+              <div class="flex items-center space-x-2 sm:space-x-4">
+                <div class="flex space-x-1 sm:space-x-2">
                   <div class="w-3 h-3 rounded-full bg-red-500"></div>
                   <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <span class="font-mono text-cyan-400 text-sm">
+                <span class="font-mono text-cyan-400 text-xs sm:text-sm truncate max-w-[150px] sm:max-w-none">
                   ~/projects/{{ expandedCategory }}/
                 </span>
               </div>
               <button 
                 @click="$emit('close')"
-                class="text-gray-400 hover:text-white transition-colors duration-200"
+                class="text-gray-400 hover:text-white transition-colors duration-200 p-1"
                 aria-label="Close terminal"
               >
-                <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
+                <UIcon name="i-heroicons-x-mark" class="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
           
-          <div class="cyber-terminal-content bg-black/90 text-green-400 p-6 font-mono text-sm overflow-y-auto max-h-[75vh]">
+          <div class="cyber-terminal-content bg-black/90 text-green-400 p-3 sm:p-6 font-mono text-xs sm:text-sm overflow-auto max-h-[75vh] sm:max-h-[70vh] min-h-[300px]">
             <!-- Terminal content -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4 min-w-max">
               <!-- Terminal prompt and title -->
-              <div class="flex items-center space-x-2">
+              <div class="flex items-center space-x-2 whitespace-nowrap">
                 <span class="text-cyan-400">root@portfolio:</span>
                 <span class="text-white">~/projects/{{ expandedCategory }}</span>
                 <span class="text-cyan-400">$</span>
@@ -48,16 +48,16 @@
               </div>
               
               <!-- Under construction message -->
-              <div class="bg-yellow-900/20 border border-yellow-500/30 rounded p-4 my-4">
-                <div class="flex items-center space-x-3 mb-3">
-                  <UIcon name="i-heroicons-exclamation-triangle" class="w-6 h-6 text-yellow-400" />
-                  <span class="text-yellow-400 font-bold">UNDER CONSTRUCTION</span>
+              <div class="bg-yellow-900/20 border border-yellow-500/30 rounded p-3 sm:p-4 my-3 sm:my-4 min-w-0">
+                <div class="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
+                  <UIcon name="i-heroicons-exclamation-triangle" class="w-4 h-4 sm:w-6 sm:h-6 text-yellow-400 flex-shrink-0" />
+                  <span class="text-yellow-400 font-bold text-sm sm:text-base">UNDER CONSTRUCTION</span>
                 </div>
-                <p class="text-gray-300 mb-3">
+                <p class="text-gray-300 mb-2 sm:mb-3 text-xs sm:text-sm leading-relaxed">
                   This section is currently being developed. Check back soon for exciting updates!
                 </p>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-gradient-to-r from-cyan-400 to-purple-500 h-2 rounded-full animate-pulse" style="width: 65%"></div>
+                <div class="w-full bg-gray-700 rounded-full h-1.5 sm:h-2">
+                  <div class="bg-gradient-to-r from-cyan-400 to-purple-500 h-1.5 sm:h-2 rounded-full animate-pulse" style="width: 65%"></div>
                 </div>
                 <div class="flex justify-between text-xs text-gray-400 mt-1">
                   <span>Progress: 65%</span>
@@ -66,43 +66,49 @@
               </div>
               
               <!-- Mock directory listing -->
-              <div class="space-y-1">
-                <div class="text-gray-500">total 42</div>
-                <div class="flex space-x-4">
-                  <span class="text-blue-400">drwxr-xr-x</span>
-                  <span class="text-gray-400">2 dev dev 4096</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-cyan-400">.</span>
+              <div class="space-y-1 overflow-x-auto">
+                <div class="text-gray-500 text-xs sm:text-sm">total 42</div>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-blue-400 w-20 sm:w-24 flex-shrink-0">drwxr-xr-x</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">2 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">4096</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-cyan-400 ml-4 sm:ml-6">.</span>
                 </div>
-                <div class="flex space-x-4">
-                  <span class="text-blue-400">drwxr-xr-x</span>
-                  <span class="text-gray-400">2 dev dev 4096</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-cyan-400">..</span>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-blue-400 w-20 sm:w-24 flex-shrink-0">drwxr-xr-x</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">2 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">4096</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-cyan-400 ml-4 sm:ml-6">..</span>
                 </div>
-                <div class="flex space-x-4">
-                  <span class="text-green-400">-rw-r--r--</span>
-                  <span class="text-gray-400">1 dev dev 1337</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-white">README.md</span>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-green-400 w-20 sm:w-24 flex-shrink-0">-rw-r--r--</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">1 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">1337</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-white ml-4 sm:ml-6">README.md</span>
                 </div>
-                <div class="flex space-x-4">
-                  <span class="text-yellow-400">-rw-r--r--</span>
-                  <span class="text-gray-400">1 dev dev 2048</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-purple-400">package.json</span>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-yellow-400 w-20 sm:w-24 flex-shrink-0">-rw-r--r--</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">1 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">2048</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-purple-400 ml-4 sm:ml-6">package.json</span>
                 </div>
-                <div class="flex space-x-4">
-                  <span class="text-blue-400">drwxr-xr-x</span>
-                  <span class="text-gray-400">3 dev dev 4096</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-cyan-400">src/</span>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-blue-400 w-20 sm:w-24 flex-shrink-0">drwxr-xr-x</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">3 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">4096</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-cyan-400 ml-4 sm:ml-6">src/</span>
                 </div>
-                <div class="flex space-x-4">
-                  <span class="text-red-400">-rwx------</span>
-                  <span class="text-gray-400">1 dev dev 8192</span>
-                  <span class="text-gray-400">{{ getCurrentDate() }}</span>
-                  <span class="text-red-400">build.sh</span>
+                <div class="flex space-x-3 sm:space-x-4 whitespace-nowrap min-w-max">
+                  <span class="text-red-400 w-20 sm:w-24 flex-shrink-0">-rwx------</span>
+                  <span class="text-gray-400 w-16 sm:w-20 flex-shrink-0">1 dev dev</span>
+                  <span class="text-gray-400 w-10 sm:w-12 flex-shrink-0">8192</span>
+                  <span class="text-gray-400 w-24 sm:w-28 flex-shrink-0">{{ getCurrentDate() }}</span>
+                  <span class="text-red-400 ml-4 sm:ml-6">build.sh</span>
                 </div>
               </div>
               
