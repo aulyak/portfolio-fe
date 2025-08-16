@@ -84,9 +84,9 @@
             </div>
           </div>
 
-          <h1 class="hero-title text-5xl md:text-7xl font-black mb-8 leading-tight">
+          <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-tight">
             <span class="block text-white glitch-text" data-text="AULYA">AULYA</span>
-            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glitch-text-secondary" data-text="KHATULISTIVANI">KHATULISTIVANI</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glitch-text-secondary text-3xl sm:text-5xl md:text-7xl" data-text="KHATULISTIVANI">KHATULISTIVANI</span>
           </h1>
 
           <div class="hero-subtitle mb-8">
@@ -116,12 +116,12 @@
             <span class="text-cyan-400 font-mono">innovative_solutions</span>
           </p>
 
-          <div class="hero-buttons flex flex-col sm:flex-row gap-6 justify-center">
+          <div class="hero-buttons flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <button @click="scrollToSection('projects')" class="cyber-btn cyber-btn-primary">
-              <span class="font-mono">[VIEW_PROJECTS]</span>
+              <span class="font-mono text-xs sm:text-sm">[VIEW_PROJECTS]</span>
             </button>
             <button @click="scrollToSection('contact')" class="cyber-btn cyber-btn-secondary">
-              <span class="font-mono">[CONNECT]</span>
+              <span class="font-mono text-xs sm:text-sm">[CONNECT]</span>
             </button>
           </div>
         </div>
@@ -177,12 +177,12 @@
                 };
               </div>
               
-              <div class="mt-8 flex gap-4 justify-center">
+              <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <button @click="scrollToSection('contact')" class="cyber-btn cyber-btn-primary">
-                  <span class="font-mono">[GET_IN_TOUCH]</span>
+                  <span class="font-mono text-xs sm:text-sm">[GET_IN_TOUCH]</span>
                 </button>
                 <button @click="scrollToSection('projects')" class="cyber-btn cyber-btn-secondary">
-                  <span class="font-mono">[VIEW_WORK]</span>
+                  <span class="font-mono text-xs sm:text-sm">[VIEW_WORK]</span>
                 </button>
               </div>
             </div>
@@ -857,7 +857,7 @@ useSeoMeta({
 /* Cyberpunk Buttons */
 .cyber-btn {
   position: relative;
-  padding: 16px 32px;
+  padding: 14px 28px;
   background: transparent;
   border: 2px solid;
   color: white;
@@ -869,6 +869,16 @@ useSeoMeta({
   overflow: hidden;
   transform: perspective(500px) rotateX(0deg);
   cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .cyber-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
 }
 
 .cyber-btn::before {
@@ -1207,11 +1217,6 @@ useSeoMeta({
 @media (max-width: 768px) {
   .glitch-text {
     font-size: 2.5rem;
-  }
-  
-  .cyber-btn {
-    padding: 12px 24px;
-    font-size: 14px;
   }
   
   .cyber-skill-card,
